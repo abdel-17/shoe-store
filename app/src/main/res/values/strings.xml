@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Shoe Store</string>
+    <string name="email_placeholder">Email</string>
+    <string name="password_placeholder">Password</string>
+    <string name="login">Login</string>
+    <string name="login_message">Login to your account</string>
+    <string name="register">Create account</string>
+    <string name="register_message">Create your account</string>
+    <string name="password_condition">Use 8 or more characters with a mix of letters, numbers and symbols.</string>
+    <string name="welcome_message">Welcome to Shoe Store!</string>
+</resources>

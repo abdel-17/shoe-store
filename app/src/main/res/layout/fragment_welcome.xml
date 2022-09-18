@@ -50,7 +50,8 @@
             app:layout_constraintBottom_toTopOf="@+id/button_browse_shoes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_shoe" />
+            app:layout_constraintTop_toBottomOf="@+id/image_shoe"
+            tools:text="Logged in as: $email" />
 
         <Button
             android:id="@+id/button_browse_shoes"

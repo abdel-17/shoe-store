@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.shoestore.databinding.ActivityMainBinding
 
@@ -22,14 +23,23 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_host
         ) as NavHostFragment
         navController = navHostFragment.navController
+        // Set the top level destinations to the login, welcome,
+        // and shoe list fragments to hide the navigate-up button.
+        val appBarConfiguration = AppBarConfiguration.Builder(
+             topLevelDestinationIds = setOf(
+                 R.id.loginFragment,
+                 R.id.welcomeFragment,
+                 R.id.shoeListFragment
+             )
+        ).build()
         // Setup the action bar for navigation.
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        NavigationUI.setupActionBarWithNavController(
+            this, navController, appBarConfiguration
+        )
     }
 
     override fun onSupportNavigateUp(): Boolean {
         // Setup the navigate-up action.
-        // TODO fix the navigation-up button showing
-        //  in welcome fragment and shoe list fragment.
         return navController.navigateUp()
     }
 }

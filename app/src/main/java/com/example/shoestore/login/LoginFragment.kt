@@ -20,7 +20,6 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        // Infalte the layout of the fragment.
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login, container, false
         )
@@ -30,24 +29,22 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-    /**
-     * The account data in the email and password
-     * edit text views.
-     */
-    private val account: Account
+    // The account data currently in the input fields.
+    private val account
         get() = Account(
             email = binding.editTextLoginEmail.text.toString(),
             password = binding.editTextLoginPassword.text.toString()
         )
 
     /**
-     * Logs into the account and navigates back to the
+     * Logs into the account and navigates to the
      * welcome fragment if login was successful;
      * otherwise, shows an error message.
      */
     private fun login() {
+        val account = this.account
         if (viewModel.isRegistered(account))
-            navigateToWelcomeFragment()
+            navigateToWelcomeFragment(account)
         else
             showSnackbar("Incorrect email or password.")
     }
@@ -58,9 +55,10 @@ class LoginFragment : Fragment() {
      * otherwise, shows an error message.
      */
     private fun register() {
+        val account = this.account
         try {
             viewModel.register(account)
-            navigateToWelcomeFragment()
+            navigateToWelcomeFragment(account)
         } catch (e: RegistrationError) {
             showSnackbar(e.message)
         }
@@ -69,8 +67,10 @@ class LoginFragment : Fragment() {
     /**
      * Navigates to the welcome fragment.
      */
-    private fun navigateToWelcomeFragment() {
-        findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+    private fun navigateToWelcomeFragment(account: Account) {
+        findNavController().navigate(
+            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(account.email)
+        )
     }
 
     /**

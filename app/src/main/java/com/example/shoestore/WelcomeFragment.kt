@@ -5,8 +5,6 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Lifecycle
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.shoestore.databinding.FragmentWelcomeBinding
@@ -17,24 +15,35 @@ class WelcomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View {
-        // Inflate the layout of this fragment.
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_welcome, container, false
         )
-
-        // Add a menu to navigate to the instructions fragment.
-        val menuProvider = object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.overflow_menu, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem) =
-                NavigationUI.onNavDestinationSelected(menuItem, findNavController())
+        // Initialize the email recieved from the login fragment.
+        binding.email = WelcomeFragmentArgs.fromBundle(requireArguments()).email
+        // Setup the browse shoes button action.
+        binding.buttonBrowseShoes.setOnClickListener {
+            // Navigate to the shoes list fragment.
+            findNavController().navigate(
+                WelcomeFragmentDirections.actionWelcomeFragmentToShoeListFragment()
+            )
         }
-        // Tie the menu to the view lifecycle to remove it when it's destroyed.
-        requireActivity().addMenuProvider(
-            menuProvider, viewLifecycleOwner, Lifecycle.State.RESUMED
-        )
+        // Add a menu to navigate to the instructions fragment.
+        // The menu is removed when this fragment's view is destroyed.
+        requireActivity().addMenuProvider(menuProvider, viewLifecycleOwner)
         return binding.root
+    }
+
+    /**
+     * A menu provider used to show the instructions menu.
+     */
+    private val menuProvider = object : MenuProvider {
+        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+            menuInflater.inflate(R.menu.instructions_menu, menu)
+        }
+
+        override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+            // Navigatie to the instructions fragment.
+            return NavigationUI.onNavDestinationSelected(menuItem, findNavController())
+        }
     }
 }

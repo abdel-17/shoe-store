@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         // Setup the navigate-up action.
+        // TODO fix the navigation-up button showing
+        //  in welcome fragment and shoe list fragment.
         return navController.navigateUp()
     }
 }

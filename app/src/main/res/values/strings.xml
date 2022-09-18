@@ -8,7 +8,6 @@
     <string name="register_message">Create your account</string>
     <string name="password_condition">Use 8 or more characters with a mix of letters, numbers and symbols.</string>
     <string name="welcome_title">Welcome to Shoe Store!</string>
-    <string name="login_success">You have logged in successfully.</string>
     <string name="browse_shoes">Browse shoes</string>
     <string name="instructions">Instructions</string>
 </resources>

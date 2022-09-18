@@ -1,9 +1,9 @@
 package com.example.shoestore.login
 
 sealed class RegistrationError(override val message: String): Error() {
-    object UsedEmailAddress: RegistrationError("Email address is used.")
+    object UsedEmail: RegistrationError("Email is used.")
 
-    object InvalidEmail: RegistrationError("Email address is invalid.")
+    object InvalidEmail: RegistrationError("Email is invalid.")
 
     object WeakPassword: RegistrationError("Password is weak.")
 }

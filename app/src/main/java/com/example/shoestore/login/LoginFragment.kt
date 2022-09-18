@@ -1,59 +1,81 @@
 package com.example.shoestore.login
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 
-/**
- * A fragment for logging in and registering an account.
- */
 class LoginFragment : Fragment() {
+    private val viewModel: LoginViewModel by viewModels()
+
+    private lateinit var binding: FragmentLoginBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment.
-        val binding: FragmentLoginBinding = DataBindingUtil.inflate(
+        // Infalte the layout of the fragment.
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login, container, false
         )
-        val viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
-        // Read the data from the text views.
-        val account = Account(
-            emailAddress = binding.editTextLoginEmail.text.toString(),
-            password = binding.editTextLoginPassword.text.toString()
-        )
-        binding.buttonLogin.setOnClickListener {
-            // Verify login, the navigate back to the welcome fragment.
-            if (viewModel.verifyLogin(account))
-                findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
-            else
-                // Show a snackbar with an error message.
-                showSnackbar("Invalid username or password")
-        }
-        binding.buttonRegister.setOnClickListener {
-            try {
-                // Try to register, then if registration hasn't
-                // failed, navigate back to the welcome fragment.
-                viewModel.register(account)
-                findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
-            } catch (e: RegistrationError) {
-                // Show a snackbar with the error's message.
-                showSnackbar(e.message)
-            }
-        }
+        // Setup the actions of the buttons.
+        binding.buttonLogin.setOnClickListener { login() }
+        binding.buttonRegister.setOnClickListener { register() }
         return binding.root
     }
 
     /**
-     * Shows [message] in a snackbar for [duration] milliseconds.
+     * The account data in the email and password
+     * edit text views.
+     */
+    private val account: Account
+        get() = Account(
+            email = binding.editTextLoginEmail.text.toString(),
+            password = binding.editTextLoginPassword.text.toString()
+        )
+
+    /**
+     * Logs into the account and navigates back to the
+     * welcome fragment if login was successful;
+     * otherwise, shows an error message.
+     */
+    private fun login() {
+        if (viewModel.isRegistered(account))
+            navigateToWelcomeFragment()
+        else
+            showSnackbar("Incorrect email or password.")
+    }
+
+    /**
+     * Registers the account and navigates to the
+     * welcome fragment if registration was successful;
+     * otherwise, shows an error message.
+     */
+    private fun register() {
+        try {
+            viewModel.register(account)
+            navigateToWelcomeFragment()
+        } catch (e: RegistrationError) {
+            showSnackbar(e.message)
+        }
+    }
+
+    /**
+     * Navigates to the welcome fragment.
+     */
+    private fun navigateToWelcomeFragment() {
+        findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+    }
+
+    /**
+     * Shows [message] in a snackbar
+     * for [duration] milliseconds.
      */
     private fun showSnackbar(message: String, duration: Int = Snackbar.LENGTH_LONG) {
         Snackbar.make(requireView(), message, duration).show()

@@ -2,12 +2,12 @@ package com.example.shoestore.login
 
 import android.util.Patterns
 
-data class Account(val emailAddress: String, val password: String) {
+data class Account(val email: String, val password: String) {
     /**
-     * @return `true` if [emailAddress] is a valid email address.
+     * @return `true` if [email] is a valid email address.
      */
-    val hasValidEmailAddress
-        get() = Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()
+    val hasValidEmail
+        get() = Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
     /**
      * A password is considered strong if it

@@ -6,14 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
+import com.example.shoestore.ShoeViewModel
 import com.example.shoestore.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 
 class LoginFragment : Fragment() {
-    private val viewModel: LoginViewModel by viewModels()
+    private val viewModel: ShoeViewModel by activityViewModels()
 
     private lateinit var binding: FragmentLoginBinding
 
@@ -43,10 +44,11 @@ class LoginFragment : Fragment() {
      */
     private fun login() {
         val account = this.account
-        if (viewModel.isRegistered(account))
+        if (viewModel.isRegistered(account)) {
             navigateToWelcomeFragment(account)
-        else
+        } else {
             showSnackbar("Incorrect email or password.")
+        }
     }
 
     /**
@@ -57,7 +59,7 @@ class LoginFragment : Fragment() {
     private fun register() {
         val account = this.account
         try {
-            viewModel.register(account)
+            viewModel.registerAccount(account)
             navigateToWelcomeFragment(account)
         } catch (e: RegistrationError) {
             showSnackbar(e.message)

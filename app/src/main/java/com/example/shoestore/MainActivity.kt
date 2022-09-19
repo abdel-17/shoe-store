@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         // Log changes to the backstack for debugging.
         navController.addOnDestinationChangedListener { controller, _, _ ->
-            Log.i("MainActivity", controller.backQueue.toString())
+            Log.d("MainActivity", controller.backQueue.toString())
         }
         // Set the top level destinations to the login, welcome,
         // and shoe list fragments to hide the navigate-up button.

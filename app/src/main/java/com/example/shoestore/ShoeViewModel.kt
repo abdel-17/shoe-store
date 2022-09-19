@@ -1,17 +1,22 @@
-package com.example.shoestore.login
+package com.example.shoestore
 
 import androidx.lifecycle.ViewModel
+import com.example.shoestore.login.Account
+import com.example.shoestore.login.RegistrationError
 
-class LoginViewModel : ViewModel() {
+class ShoeViewModel : ViewModel() {
     /**
      * A map from each registered email address
      * to its password.
+     *
+     * Note: The data is lost when this
+     * view model is destroyed.
      */
-    // TODO save accounts in a database
+    // TODO save accounts in an encrypted database.
     private val registeredAccounts = mutableMapOf<String, String>()
 
     /**
-     * Registers the given account.
+     * Tries to register [account].
      *
      * @throws [RegistrationError.UsedEmail] if
      * the email address of [account] is already used.
@@ -22,7 +27,7 @@ class LoginViewModel : ViewModel() {
      * @throws [RegistrationError.WeakPassword] if
      * the password of [account] is weak.
      */
-    fun register(account: Account) {
+    fun registerAccount(account: Account) {
         if (registeredAccounts.containsKey(account.email))
             throw RegistrationError.UsedEmail
         if (!account.hasValidEmail)
@@ -33,8 +38,8 @@ class LoginViewModel : ViewModel() {
     }
 
     /**
-     * @return `true` if [account] is registered
-     * with the correct password.
+     * @return `true` if [account] had been registered
+     * before with [registerAccount].
      */
     fun isRegistered(account: Account) =
         registeredAccounts[account.email] == account.password

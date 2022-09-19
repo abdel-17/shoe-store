@@ -28,7 +28,10 @@ class ShoeListFragment : Fragment() {
 
         override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
             // Navigate to the login fragment.
-            return NavigationUI.onNavDestinationSelected(menuItem, findNavController())
+            findNavController().navigate(
+                ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment()
+            )
+            return true
         }
     }
 }

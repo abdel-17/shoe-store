@@ -1,4 +1,4 @@
-package com.example.shoestore
+package com.example.shoestore.onboarding
 
 import android.os.Bundle
 import android.view.*
@@ -7,6 +7,7 @@ import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
@@ -34,7 +35,7 @@ class WelcomeFragment : Fragment() {
     }
 
     /**
-     * A menu provider used to show the instructions menu.
+     * The menu provider of the instructions menu.
      */
     private val menuProvider = object : MenuProvider {
         override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

@@ -2,6 +2,7 @@ package com.example.shoestore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_host
         ) as NavHostFragment
         navController = navHostFragment.navController
+        // Log changes to the backstack for debugging.
+        navController.addOnDestinationChangedListener { controller, _, _ ->
+            Log.i("MainActivity", controller.backQueue.toString())
+        }
         // Set the top level destinations to the login, welcome,
         // and shoe list fragments to hide the navigate-up button.
         val appBarConfiguration = AppBarConfiguration.Builder(

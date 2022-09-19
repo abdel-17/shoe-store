@@ -7,6 +7,7 @@ class LoginViewModel : ViewModel() {
      * A map from each registered email address
      * to its password.
      */
+    // TODO save accounts in a database
     private val registeredAccounts = mutableMapOf<String, String>()
 
     /**

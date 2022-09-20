@@ -8,7 +8,10 @@
     <string name="register_message">Create your account</string>
     <string name="password_condition">Use 8 or more characters with a mix of letters, numbers and symbols.</string>
     <string name="welcome_title">Welcome to Shoe Store!</string>
-    <string name="browse_shoes">Browse shoes</string>
     <string name="instructions">Instructions</string>
+    <string name="shoe_list">Shoe list</string>
+    <string name="instructions_shoe_list">• Click the \"Shoe List\" button in order to browse the list of available shoes.</string>
+    <string name="instructions_logout">• You can add shoes to the list using the \"+\" button and logout using the menu button.</string>
     <string name="logout">Logout</string>
+    <string name="plus_icon_description">"Add a shoe to the list."</string>
 </resources>

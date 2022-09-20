@@ -23,20 +23,23 @@
         android:name="com.example.shoestore.onboarding.WelcomeFragment"
         android:label="WelcomeFragment"
         tools:layout="@layout/fragment_welcome">
-        <action
-            android:id="@+id/action_welcomeFragment_to_shoeListFragment"
-            app:destination="@id/shoeListFragment"
-            app:popUpTo="@id/navigation"
-            app:popUpToInclusive="false" />
         <argument
             android:name="email"
             app:argType="string" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_instructionsFragment"
+            app:destination="@id/instructionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/instructionsFragment"
         android:name="com.example.shoestore.onboarding.InstructionsFragment"
         android:label="fragment_instructions"
-        tools:layout="@layout/fragment_instructions" />
+        tools:layout="@layout/fragment_instructions" >
+        <action
+            android:id="@+id/action_instructionsFragment_to_shoeListFragment"
+            app:destination="@id/shoeListFragment"
+            app:popUpTo="@id/navigation" />
+    </fragment>
     <fragment
         android:id="@+id/shoeListFragment"
         android:name="com.example.shoestore.shoe.ShoeListFragment"

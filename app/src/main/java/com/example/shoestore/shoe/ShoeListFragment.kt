@@ -4,18 +4,29 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.core.view.MenuProvider
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.example.shoestore.R
+import com.example.shoestore.databinding.FragmentShoeListBinding
 
 class ShoeListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
-    ): View? {
-        // TODO setup layout
-        // Add a menu to logout of the account.
-        requireActivity().addMenuProvider(menuProvider, viewLifecycleOwner)
-        return inflater.inflate(R.layout.fragment_shoe_list, container, false)
+    ): View {
+        // TODO setup the rest of the layout
+        val binding: FragmentShoeListBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_shoe_list, container, false
+        )
+        binding.buttonAddShoe.setOnClickListener {
+            // Navigate to the shoe detail fragment.
+            findNavController().navigate(
+                ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment()
+            )
+        }
+        // Add a menu to logout of the account. This menu is tied to the
+        // view lifecycle, so it's destroyed when the view is destroyed.
+        activity?.addMenuProvider(menuProvider, viewLifecycleOwner)
+        return binding.root
     }
 
     /**

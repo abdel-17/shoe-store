@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".onboarding.InstructionsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="instructions_fragment" />
+        android:padding="16dp" >
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/text_shoe_list_button_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text_shoe_list_instructions"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="24dp"
+            android:text="@string/instructions_shoe_list"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="?colorOnSurface" />
+
+        <TextView
+            android:id="@+id/text_shoe_list_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button_show_shoe_list"
+            android:layout_alignStart="@+id/text_shoe_list_button_instructions"
+            android:layout_marginBottom="24dp"
+            android:text="@string/instructions_logout"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="?colorOnSurface" />
+
+        <Button
+            android:id="@+id/button_show_shoe_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/shoe_list" />
+    </RelativeLayout>
+</layout>

@@ -3,10 +3,8 @@ package com.example.shoestore.onboarding
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentWelcomeBinding
 
@@ -22,29 +20,12 @@ class WelcomeFragment : Fragment() {
         // Initialize the email recieved from the login fragment.
         binding.email = WelcomeFragmentArgs.fromBundle(requireArguments()).email
         // Setup the browse shoes button action.
-        binding.buttonBrowseShoes.setOnClickListener {
-            // Navigate to the shoes list fragment.
+        binding.buttonShowInstructions.setOnClickListener {
+            // Navigate to the instructions fragment.
             findNavController().navigate(
-                WelcomeFragmentDirections.actionWelcomeFragmentToShoeListFragment()
+                WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment()
             )
         }
-        // Add a menu to navigate to the instructions fragment.
-        // The menu is removed when this fragment's view is destroyed.
-        requireActivity().addMenuProvider(menuProvider, viewLifecycleOwner)
         return binding.root
-    }
-
-    /**
-     * The menu provider of the instructions menu.
-     */
-    private val menuProvider = object : MenuProvider {
-        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-            menuInflater.inflate(R.menu.instructions_menu, menu)
-        }
-
-        override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-            // Navigatie to the instructions fragment.
-            return NavigationUI.onNavDestinationSelected(menuItem, findNavController())
-        }
     }
 }

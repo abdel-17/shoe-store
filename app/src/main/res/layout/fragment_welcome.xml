@@ -10,16 +10,16 @@
             type="String" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/text_welcome_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/text_login_email"
-            android:layout_centerHorizontal="true"
             android:text="@string/welcome_title"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
@@ -27,7 +27,6 @@
             android:id="@+id/text_login_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:text="@{`Logged in as ` + email}"
@@ -38,8 +37,6 @@
             android:id="@+id/button_show_instructions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_login_email"
-            android:layout_centerHorizontal="true"
             android:text="@string/instructions" />
-    </RelativeLayout>
+    </LinearLayout>
 </layout>

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Shoe Store</string>
+    <!--Login fragment-->
     <string name="email_placeholder">Email</string>
     <string name="password_placeholder">Password</string>
     <string name="login">Login</string>
@@ -7,11 +8,14 @@
     <string name="register">Create account</string>
     <string name="register_message">Create your account</string>
     <string name="password_condition">Use 8 or more characters with a mix of letters, numbers and symbols.</string>
+    <!--Welcome fragment-->
     <string name="welcome_title">Welcome to Shoe Store!</string>
     <string name="instructions">Instructions</string>
+    <!--Instructions fragment-->
+    <string name="shoe_icon_description">A shoe icon</string>
     <string name="shoe_list">Shoe list</string>
-    <string name="instructions_shoe_list">• Click the \"Shoe List\" button in order to browse the list of available shoes.</string>
-    <string name="instructions_logout">• You can add shoes to the list using the \"+\" button and logout using the menu button.</string>
+    <string name="instructions_shoe_list">Click the \"Shoe List\" button to navigate to the shoe list screen. There, you will find a plus button to add a new shoe to the list, and a logout button to return to the login screen.</string>
+    <!--Shoe list fragment-->
     <string name="logout">Logout</string>
-    <string name="plus_icon_description">"Add a shoe to the list."</string>
+    <string name="plus_icon_description">"A plus button that adds a shoe to the list"</string>
 </resources>

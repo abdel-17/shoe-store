@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="email"
             type="String" />
@@ -17,46 +18,29 @@
             android:id="@+id/text_welcome_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome_title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="bold"
             android:layout_above="@id/text_login_email"
             android:layout_centerHorizontal="true"
-            />
-
-        <!--
-        <ImageView
-            android:id="@+id/image_shoe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/text_login_success"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/text_welcome_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:srcCompat="@mipmap/ic_launcher_round"
-            tools:ignore="contentDescription"/>
-            -->
+            android:text="@string/welcome_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
         <TextView
             android:id="@+id/text_login_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@id/text_welcome_title"
+            android:layout_centerVertical="true"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:text="@{`Logged in as ` + email}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:layout_centerVertical="true"
-            android:layout_alignStart="@id/text_welcome_title"
-            tools:text="Logged in as $email"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            tools:text="Logged in as $email" />
 
         <Button
             android:id="@+id/button_show_instructions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/instructions"
             android:layout_below="@id/text_login_email"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:text="@string/instructions" />
     </RelativeLayout>
 </layout>

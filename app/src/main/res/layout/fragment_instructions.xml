@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/shoe_icon_description"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            android:src="@mipmap/ic_launcher_round" />
 
         <TextView
             android:id="@+id/text_shoe_list_button_instructions"
@@ -31,15 +30,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/instructions_shoe_list"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:text="@string/shoe_list_instructions"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:lineSpacingMultiplier="1.2"/>
 
         <Button
             android:id="@+id/button_show_shoe_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="@string/shoe_list" />
     </LinearLayout>
 </layout>

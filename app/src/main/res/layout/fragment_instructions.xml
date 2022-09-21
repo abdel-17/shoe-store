@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/regular_spacing"
             android:text="@string/instructions"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
@@ -29,7 +29,7 @@
             android:id="@+id/text_shoe_list_instructions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/small_spacing"
             android:text="@string/shoe_list_instructions"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:lineSpacingMultiplier="1.2"/>
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/regular_spacing"
             android:text="@string/shoe_list" />
     </LinearLayout>
 </layout>

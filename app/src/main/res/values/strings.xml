@@ -19,4 +19,5 @@
     <string name="logout">Logout</string>
     <string name="plus_icon_description">"Plus icon"</string>
     <string name="shoe_list_instructions">Click the Shoe List button to navigate to the shoe list screen. There, you will find a plus button to add a new shoe to the list, and a logout button to return to the login screen.</string>
+    <string name="shoe_size_and_company_format">Size: %s\nCompany: %s</string>
 </resources>

@@ -1,10 +1,8 @@
-package com.example.shoestore
+package com.example.shoestore.login
 
 import androidx.lifecycle.ViewModel
-import com.example.shoestore.login.Account
-import com.example.shoestore.login.RegistrationError
 
-class ShoeViewModel : ViewModel() {
+class LoginViewModel : ViewModel() {
     /**
      * A map from each registered email address
      * to its password.

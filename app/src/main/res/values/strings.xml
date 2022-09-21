@@ -10,12 +10,13 @@
     <string name="password_condition">Use 8 or more characters with a mix of letters, numbers and symbols.</string>
     <!--Welcome fragment-->
     <string name="welcome_title">Welcome to Shoe Store!</string>
+    <string name="logged_email_format">Logged in as %s</string>
     <string name="instructions">Instructions</string>
     <!--Instructions fragment-->
-    <string name="shoe_icon_description">A shoe icon</string>
+    <string name="shoe_icon_description">White shoe</string>
     <string name="shoe_list">Shoe list</string>
-    <string name="instructions_shoe_list">Click the \"Shoe List\" button to navigate to the shoe list screen. There, you will find a plus button to add a new shoe to the list, and a logout button to return to the login screen.</string>
     <!--Shoe list fragment-->
     <string name="logout">Logout</string>
-    <string name="plus_icon_description">"A plus button that adds a shoe to the list"</string>
+    <string name="plus_icon_description">"Plus icon"</string>
+    <string name="shoe_list_instructions">Click the Shoe List button to navigate to the shoe list screen. There, you will find a plus button to add a new shoe to the list, and a logout button to return to the login screen.</string>
 </resources>

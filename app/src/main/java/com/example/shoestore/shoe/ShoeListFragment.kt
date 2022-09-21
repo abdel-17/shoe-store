@@ -1,22 +1,37 @@
 package com.example.shoestore.shoe
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.R.style.*
 import androidx.fragment.app.Fragment
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
 import com.example.shoestore.databinding.FragmentShoeListBinding
 
 class ShoeListFragment : Fragment() {
+    private val viewModel: ShoeViewModel by activityViewModels()
+
+    private lateinit var binding: FragmentShoeListBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View {
-        // TODO setup the rest of the layout
-        val binding: FragmentShoeListBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_list, container, false
         )
+        viewModel.shoes.observe(viewLifecycleOwner) { shoeList ->
+            Log.d("Shoe List Changed", "shoeList has changed to $shoeList.")
+            // A new shoe has been added, so the shoe list is no longer empty.
+            binding.textAddShoes.visibility = View.GONE
+            // Add the shoe to the linear layout.
+            addShoe(shoeList.last())
+        }
         binding.buttonAddShoe.setOnClickListener {
             // Navigate to the shoe detail fragment.
             findNavController().navigate(
@@ -44,5 +59,44 @@ class ShoeListFragment : Fragment() {
             )
             return true
         }
+    }
+
+    /**
+     * Adds text views describing [shoe]
+     * to the shoe list's layout.
+     */
+    private fun addShoe(shoe: Shoe) {
+        val layout = binding.linearLayoutShoeList
+        val regularSpacing = resources.getDimensionPixelSize(R.dimen.regular_spacing)
+        val smallSpacing = resources.getDimensionPixelSize(R.dimen.small_spacing)
+        val matchParent = LinearLayout.LayoutParams.MATCH_PARENT
+        // Add the name with a title style.
+        val nameView = TextView(context).apply {
+            layoutParams = LinearLayout.LayoutParams(matchParent, matchParent).apply {
+                // Add spacing between the name and the text above.
+                topMargin = regularSpacing
+            }
+            text = shoe.name
+            setTextAppearance(TextAppearance_AppCompat_Title)
+        }
+        layout.addView(nameView)
+        // Add the rest of the shoe properties with a headline style.
+        val propertiesView = TextView(context).apply {
+            layoutParams = LinearLayout.LayoutParams(matchParent, matchParent).apply {
+                // Add smaller spacing between the properties and the name.
+                topMargin = smallSpacing
+                // Add a bottom margin to keep some space between
+                // the last element and the bottom of the device.
+                bottomMargin = regularSpacing
+            }
+            // Size: ${shoe.size}
+            // Company: ${shoe.company}
+            // $description
+            text = getString(R.string.shoe_details_format, shoe.size, shoe.company, shoe.description)
+            setTextAppearance(TextAppearance_AppCompat_Subhead)
+            // Add a line spacing multiplier to improve readability.
+            setLineSpacing(0F, 1.2F)
+        }
+        layout.addView(propertiesView)
     }
 }

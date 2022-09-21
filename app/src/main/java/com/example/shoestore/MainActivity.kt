@@ -1,13 +1,13 @@
 package com.example.shoestore
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.shoestore.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,31 +20,28 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(
             this, R.layout.activity_main
         )
-        val navHostFragment = supportFragmentManager.findFragmentById(
-            R.id.nav_host
-        ) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         navController = navHostFragment.navController
-        // Log changes to the backstack for debugging.
+        // Log changes to the backstack.
         navController.addOnDestinationChangedListener { controller, _, _ ->
-            Log.d("MainActivity", controller.backQueue.toString())
+            Log.d("Backstack Changed", controller.backQueue.toString())
         }
-        // Set the top level destinations to the login, welcome,
-        // and shoe list fragments to hide the navigate-up button.
-        val appBarConfiguration = AppBarConfiguration.Builder(
-             topLevelDestinationIds = setOf(
-                 R.id.loginFragment,
-                 R.id.welcomeFragment,
-                 R.id.shoeListFragment
-             )
-        ).build()
         // Setup the action bar for navigation.
-        NavigationUI.setupActionBarWithNavController(
-            this, navController, appBarConfiguration
-        )
+        val appBarConfiguration = AppBarConfiguration.Builder(
+            // Hide the navigate-up button in the login,
+            // welcome, and shoe list fragments.
+            topLevelDestinationIds = setOf(
+                R.id.loginFragment,
+                R.id.welcomeFragment,
+                R.id.shoeListFragment
+            )
+        ).build()
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        // Setup the navigate-up action.
+        // Setup the navigate-up button.
         return navController.navigateUp()
     }
 }

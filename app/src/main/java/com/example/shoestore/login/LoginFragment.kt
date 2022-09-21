@@ -1,25 +1,28 @@
 package com.example.shoestore.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore.R
-import com.example.shoestore.ShoeViewModel
 import com.example.shoestore.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 
 class LoginFragment : Fragment() {
-    private val viewModel: ShoeViewModel by activityViewModels()
+    // We used the `activityViewModels` property delegate
+    // instead of `viewModels` to tie its lifecycle to the
+    // activity. This way, we don't lose the registered
+    // accounts when we navigate out of this fragment.
+    private val viewModel: LoginViewModel by activityViewModels()
 
     private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login, container, false

@@ -10,7 +10,7 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/image_shoe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/shoe_icon_description"

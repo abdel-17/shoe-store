@@ -1,14 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".shoe.ShoeDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="shoe_detail_fragment" />
+        android:layout_margin="@dimen/regular_spacing"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/text_add_new_shoe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/small_spacing"
+            android:text="@string/add_new_shoe"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+        <EditText
+            android:id="@+id/edit_text_shoe_name"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="@string/name"
+            android:importantForAutofill="no"
+            android:inputType="textCapWords" />
+
+        <EditText
+            android:id="@+id/edit_text_shoe_company"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="@string/company"
+            android:importantForAutofill="no"
+            android:inputType="textCapWords"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/edit_text_shoe_size"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:ems="5"
+            android:hint="@string/size"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/edit_text_shoe_description"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:ems="20"
+            android:hint="@string/description"
+            android:importantForAutofill="no"
+            android:inputType="text"/>
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="96dp"
+            android:layout_height="48dp"
+            android:text="@string/save"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/button_cancel"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+            android:layout_width="96dp"
+            android:layout_height="48dp"
+            android:text="@string/cancel"
+            android:layout_marginTop="@dimen/small_spacing"
+            android:layout_gravity="center_horizontal"
+            android:textColor="?colorError"
+            tools:ignore="TextContrastCheck" />
+    </LinearLayout>
+</layout>

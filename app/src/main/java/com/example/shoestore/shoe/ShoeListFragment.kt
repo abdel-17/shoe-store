@@ -29,8 +29,8 @@ class ShoeListFragment : Fragment() {
             Log.d("Shoe List Changed", "shoeList has changed to $shoeList.")
             // A new shoe has been added, so the shoe list is no longer empty.
             binding.textAddShoes.visibility = View.GONE
-            // Add the shoe to the linear layout.
-            addShoe(shoeList.last())
+            // Add the shoes to the linear layout.
+            shoeList.forEach(this::addShoe)
         }
         binding.buttonAddShoe.setOnClickListener {
             // Navigate to the shoe detail fragment.
@@ -89,10 +89,10 @@ class ShoeListFragment : Fragment() {
                 // the last element and the bottom of the device.
                 bottomMargin = regularSpacing
             }
-            // Size: ${shoe.size}
             // Company: ${shoe.company}
-            // $description
-            text = getString(R.string.shoe_details_format, shoe.size, shoe.company, shoe.description)
+            // Size: ${shoe.company}
+            // Description: ${shoe.description}
+            text = getString(R.string.shoe_details_format, shoe.company, shoe.size, shoe.description)
             setTextAppearance(TextAppearance_AppCompat_Subhead)
             // Add a line spacing multiplier to improve readability.
             setLineSpacing(0F, 1.2F)

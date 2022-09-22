@@ -11,7 +11,8 @@
         <ScrollView
             android:id="@+id/scroll_view_shoe_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:ignore="SpeakableTextPresentCheck">
 
             <LinearLayout
                 android:id="@+id/linear_layout_shoe_list"
@@ -35,8 +36,8 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_add_shoe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_margin="@dimen/regular_spacing"
             android:contentDescription="@string/plus_icon_description"
             android:src="@drawable/ic_add"

@@ -2,6 +2,8 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- An instruction screen needs no more than some text and a button to navigate, so
+    a vertical linear layout works best here. It's simple to implement and looks great. -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

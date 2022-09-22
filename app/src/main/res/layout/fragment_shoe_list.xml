@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- We use a ConstraintLayout to constrain the floating action button to the bottom right
+    corner and the placeholder text to the center. This is simply not possible with just a
+    LinearLayout, so the added freedom of ConstraintLayout shines. -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -23,26 +23,18 @@ class ShoeDetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_detail, container, false
         )
+        binding.shoe = Shoe()
         binding.buttonCancel.setOnClickListener {
             // Return back to the shoe list fragment.
             findNavController().popBackStack()
         }
         binding.buttonSave.setOnClickListener {
             // Add the shoe to the list.
-            viewModel.addShoe(shoe)
-            findNavController().popBackStack()
+            binding.shoe?.let { shoe ->
+                viewModel.addShoe(shoe)
+                findNavController().popBackStack()
+            }
         }
         return binding.root
     }
-
-    /**
-     * The shoe read from the input fields.
-     */
-    private val shoe: Shoe
-        get() = Shoe(
-            name = binding.editTextShoeName.text.toString(),
-            company = binding.editTextShoeCompany.text.toString(),
-            size = binding.editTextShoeSize.text.toString(),
-            description = binding.editTextShoeDescription.text.toString()
-        )
 }

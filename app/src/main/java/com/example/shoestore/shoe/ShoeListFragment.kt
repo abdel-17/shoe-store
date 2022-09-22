@@ -76,7 +76,7 @@ class ShoeListFragment : Fragment() {
                 // Add spacing between the name and the text above.
                 topMargin = regularSpacing
             }
-            text = shoe.name
+            text = shoe.name.value
             setTextAppearance(TextAppearance_AppCompat_Title)
         }
         layout.addView(nameView)
@@ -92,7 +92,7 @@ class ShoeListFragment : Fragment() {
             // Company: ${shoe.company}
             // Size: ${shoe.company}
             // Description: ${shoe.description}
-            text = getString(R.string.shoe_details_format, shoe.company, shoe.size, shoe.description)
+            text = getString(R.string.shoe_details_format, shoe.company.value, shoe.size.value, shoe.description.value)
             setTextAppearance(TextAppearance_AppCompat_Subhead)
             // Add a line spacing multiplier to improve readability.
             setLineSpacing(0F, 1.2F)

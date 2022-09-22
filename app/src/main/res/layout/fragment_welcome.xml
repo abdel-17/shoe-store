@@ -10,6 +10,9 @@
             type="String" />
     </data>
 
+    <!-- The welcome screen is simple. It just displays two text views and a button.
+     No need for complex layouts like ConstraintLayout here. A vertical LinearLayout
+     will do. -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

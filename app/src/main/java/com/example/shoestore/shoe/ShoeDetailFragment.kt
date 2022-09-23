@@ -23,6 +23,7 @@ class ShoeDetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_detail, container, false
         )
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.shoe = Shoe()
         binding.buttonCancel.setOnClickListener {
             // Return back to the shoe list fragment.
